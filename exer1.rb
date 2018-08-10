@@ -1,16 +1,20 @@
 def select_cards(possible_cards, hand)
-
-  possible_cards.each do |current_card|
-    print "Do you want to pick up #{current_card}?"
-    answer = gets.chomp
-    if answer.downcase == 'y'
-      hand << current_card
+  counter = 0
+  until counter == 3
+    possible_cards.each do |current_card|
+      if counter < 3
+        puts "Do you want to pick up #{current_card}?"
+        answer = gets.chomp.downcase
+        if answer == 'y'
+          hand << current_card
+          counter += 1
+        end
+      end
     end
-    puts hand
-    # Changed return to puts so the method wouldn't end
   end
-
+  puts hand
 end
+
 
 available_cards = ['queen of spades', '2 of clubs', '3 of diamonds', 'jack of spades', 'queen of hearts']
 
